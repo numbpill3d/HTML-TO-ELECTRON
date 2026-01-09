@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Electron App - File Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span>📁</span>
+                File Manager Pro
+            </div>
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-tab="files">Files</button>
+                <button class="nav-tab" data-tab="images">Images</button>
+                <button class="nav-tab" data-tab="documents">Documents</button>
+                <button class="nav-tab" data-tab="settings">Settings</button>
+            </nav>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search files..." id="searchInput">
+            </div>
+        </header>
+
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Quick Access</h3>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item active">
+                        <span class="status-indicator status-online"></span>
+                        Recent Files
+                    </li>
+                    <li class="sidebar-item">
+                        <span class="status-indicator status-idle"></span>
+                        Downloads
+                    </li>
+                    <li class="sidebar-item">
+                        <span class="status-indicator status-online"></span>
+                        Documents
+                    </li>
+                    <li class="sidebar-item">
+                        <span class="status-indicator status-offline"></span>
+                        Pictures
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Storage</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 65%;"></div>
+                </div>
+                <p style="font-size: 0.875rem; color: var(--secondary-color);">
+                    65 GB of 100 GB used
+                </p>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Actions</h3>
+                <button class="btn btn-primary" style="width: 100%; margin-bottom: 0.5rem;">
+                    + New Folder
+                </button>
+                <button class="btn btn-secondary" style="width: 100%;">
+                    Upload Files
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="tab-content active" id="files">
+                <h1>Recent Files</h1>
+                <p style="color: var(--secondary-color); margin-bottom: 2rem;">
+                    Manage your files and folders with ease
+                </p>
+                
+                <div class="file-grid" id="fileGrid">
+                    <!-- Files will be dynamically populated -->
+                </div>
+            </div>
+
+            <div class="tab-content" id="images">
+                <h1>Image Gallery</h1>
+                <p style="color: var(--secondary-color); margin-bottom: 2rem;">
+                    View and organize your images
+                </p>
+                <div class="file-grid">
+                    <div class="file-card">
+                        <div class="file-icon">🖼️</div>
+                        <div class="file-name">vacation.jpg</div>
+                        <div class="file-size">2.3 MB</div>
+                    </div>
+                    <div class="file-card">
+                        <div class="file-icon">📸</div>
+                        <div class="file-name">profile.png</div>
+                        <div class="file-size">856 KB</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="documents">
+                <h1>Documents</h1>
+                <p style="color: var(--secondary-color); margin-bottom: 2rem;">
+                    Access your documents and PDFs
+                </p>
+                <div class="file-grid">
+                    <div class="file-card">
+                        <div class="file-icon">📄</div>
+                        <div class="file-name">report.pdf</div>
+                        <div class="file-size">1.2 MB</div>
+                    </div>
+                    <div class="file-card">
+                        <div class="file-icon">📊</div>
+                        <div class="file-name">spreadsheet.xlsx</div>
+                        <div class="file-size">445 KB</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="settings">
+                <h1>Settings</h1>
+                <p style="color: var(--secondary-color); margin-bottom: 2rem;">
+                    Configure your application preferences
+                </p>
+                <div style="background: var(--surface-color); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <h3>General Settings</h3>
+                    <div style="margin: 1rem 0;">
+                        <label style="display: block; margin-bottom: 0.5rem;">Theme:</label>
+                        <select style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px;">
+                            <option>Light Mode</option>
+                            <option>Dark Mode</option>
+                            <option>Auto</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-success">Save Settings</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
