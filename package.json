@@ -1,46 +1,64 @@
 {
-  "name": "electron-app",
+  "name": "html-to-electron",
   "version": "1.0.0",
-  "description": "Electron app created from HTML file splitting tool",
+  "description": "Convert a self-contained HTML document into a secure, runnable Electron project",
   "main": "main.js",
+  "bin": {
+    "html-to-electron": "cli.js"
+  },
   "scripts": {
     "start": "electron .",
-    "dev": "NODE_ENV=development electron .",
+    "test": "node --test test/*.test.js",
+    "check": "npm test && node --check main.js && node --check preload.js && node --check renderer.js && node --check file-splitter.js && node --check cli.js",
     "build": "electron-builder",
-    "dist": "npm run build",
-    "pack": "electron-builder --dir",
-    "postinstall": "electron-builder install-app-deps"
+    "pack": "electron-builder --dir"
   },
   "keywords": [
     "electron",
-    "app",
-    "desktop"
+    "html",
+    "converter",
+    "desktop",
+    "cli"
   ],
-  "author": "HTML Splitter Tool",
+  "author": "numbpill3d",
   "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10.0.0"
+  },
+  "dependencies": {
+    "archiver": "^8.0.0",
+    "cheerio": "^1.2.0"
+  },
   "devDependencies": {
-    "electron": "^28.0.0",
-    "electron-builder": "^24.9.1"
+    "electron": "^44.0.0",
+    "electron-builder": "^26.15.3"
   },
   "build": {
-    "appId": "com.example.electronapp",
-    "productName": "Electron App",
+    "appId": "com.numbpill3d.htmltoelectron",
+    "productName": "HTML to Electron",
+    "asar": true,
     "directories": {
       "output": "dist"
     },
     "files": [
-      "**/*",
-      "!node_modules/**/*",
-      "!dist/**/*"
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "file-splitter.js",
+      "index.html",
+      "style.css",
+      "package.json"
     ],
     "mac": {
-      "category": "public.app-category.productivity"
+      "category": "public.app-category.developer-tools"
     },
     "win": {
       "target": "nsis"
     },
     "linux": {
-      "target": "AppImage"
+      "target": "AppImage",
+      "category": "Development"
     }
   }
 }
